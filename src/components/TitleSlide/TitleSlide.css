@@ -9,6 +9,7 @@
 
 .title-slide {
   position: relative;
+  pointer-events: auto;
 
   display: flex;
   align-items: center;

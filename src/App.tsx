@@ -64,11 +64,11 @@ function App() {
         if (stepElement.id === activeStepId) {
           stepElement.style.opacity = '1';
           stepElement.style.transition = 'opacity 0.8s ease-out';
-          stepElement.style.pointerEvents = 'auto';
+          // 不设置 pointerEvents，让 CSS 控制
         } else {
           stepElement.style.opacity = '0.4';
           stepElement.style.transition = 'opacity 0.6s ease-out';
-          stepElement.style.pointerEvents = 'none';
+          // 不设置 pointerEvents，让 CSS 控制
         }
       });
     };
@@ -82,7 +82,7 @@ function App() {
         const stepElement = step as HTMLElement;
         stepElement.style.opacity = '1';
         stepElement.style.transition = 'opacity 0.3s ease';
-        stepElement.style.pointerEvents = 'auto';
+        // 不设置 pointerEvents，让 CSS 控制
       });
     };
 
