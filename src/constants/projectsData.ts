@@ -23,7 +23,7 @@ export const projectsData: Project[] = [
     links: [
       {
         type: 'demo',
-        url: 'https://meaw.xx.kg',
+        url: 'https://jd.meaw.xx.kg',
         text: '访问',
       },
     ],
@@ -72,7 +72,7 @@ export const projectsData: Project[] = [
     description: '一个简约风个人主页，包括：个人介绍、学习经历、网站展示、联系方式等',
     tech: ['个人主页', '简约风', 'Web'],
     links: [
-      { type: 'demo', url: 'https://awaw.meaw.xx.kg', text: '访问',},
+      { type: 'demo', url: 'https://aw.meaw.xx.kg', text: '访问',},
     ],
     layout: 'reverse',
   },

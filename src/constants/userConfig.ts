@@ -27,9 +27,9 @@ export const USER_CONFIG = {
     },
     {
       type: 'website',
-      url: 'https://awaw.meaw.xx.kg',
+      url: 'https://jd.meaw.xx.kg',
       icon: 'fas fa-globe',
-      text: '个人网站',
+      text: '接单平台',
     },
     {
       type: 'wechat',
