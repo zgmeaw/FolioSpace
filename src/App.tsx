@@ -15,6 +15,15 @@ function App() {
   useEffect(() => {
     let isOverviewMode = false;
 
+    const handleF5Refresh = (event: KeyboardEvent) => {
+      if (event.key === 'F5') {
+        event.stopPropagation();
+        window.location.reload();
+      }
+    };
+
+    window.addEventListener('keydown', handleF5Refresh, true);
+
     const handleStepEnter = (event: Event) => {
       const currentStepId = (event.target as Element).id;
 
@@ -137,6 +146,7 @@ function App() {
     updateImpressDimensions();
 
     return () => {
+      window.removeEventListener('keydown', handleF5Refresh, true);
       document.removeEventListener('impress:stepenter', handleStepEnter);
       document.removeEventListener('impress:stepleave', handleStepLeave);
       window.removeEventListener('resize', handleResize);

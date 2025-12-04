@@ -1,11 +1,22 @@
 .project-card {
-  display: grid;
+  position: relative;
+  display: flex;
   align-items: center;
 
   min-height: 520px;
 
-  grid-template-columns: 1fr 1.2fr;
   gap: 40px;
+}
+
+.project-card.reverse {
+  flex-direction: row-reverse;
+}
+
+.project-info {
+  position: relative;
+  z-index: 2;
+  pointer-events: auto;
+  flex: 1.2;
 }
 
 .project-info h2 {
@@ -266,6 +277,7 @@
 
 .project-links {
   display: flex;
+  pointer-events: auto;
 
   gap: 12px;
 }
@@ -287,6 +299,7 @@
   padding: 12px 20px;
 
   cursor: none;
+  pointer-events: auto;
   transition: all 0.3s ease;
   text-decoration: none;
 
@@ -402,6 +415,8 @@
 
 .project-preview {
   position: relative;
+  z-index: 1;
+  flex: 1;
 
   display: flex;
   overflow: hidden;

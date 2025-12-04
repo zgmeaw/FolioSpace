@@ -7,6 +7,12 @@ export default defineConfig({
   },
   plugins: [pluginReact()],
   output: {
-    assetPrefix: 'https://simonaking.com/projects/',
+    // GitHub Pages 部署时，如果是用户名.github.io 仓库，使用根路径
+    // 如果是其他仓库名，需要设置为 /仓库名/
+    // 这里先注释掉，根据你的仓库名在 GitHub Pages 设置后调整
+    // assetPrefix: process.env.NODE_ENV === 'production' ? '/FolioSpace/' : '/',
+    distPath: {
+      root: 'dist',
+    },
   },
 });

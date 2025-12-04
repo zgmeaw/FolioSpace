@@ -1,98 +1,78 @@
-import animatedGalleryPreview from '../assets/animated_gallery.gif';
-import folioSpacePreview from '../assets/folio_space.gif';
-import gwitterPreview from '../assets/gwitter.gif';
-import homepagePreview from '../assets/homepage.gif';
-import italkingPreview from '../assets/italking.png';
-import scrcpyGUIPreview from '../assets/scrcpy-gui.gif';
-import termFolioGif from '../assets/term_folio.gif';
+import goodluckPreview from '../assets/goodluck.gif';
+import awcreatePreview from '../assets/awcreate.gif';
+import spjxPreview from '../assets/spjx.gif';
+import grzyGif from '../assets/grzy.gif';
 import thinkingPreview from '../assets/wechat.png';
 import { Project } from '../types/project';
 import { SLIDE_IDS } from './slideIds';
+/* import folioSpacePreview from '../assets/folio_space.gif'; */
+/* import italkingPreview from '../assets/italking.png';
+import scrcpyGUIPreview from '../assets/scrcpy-gui.gif'; */
+
 
 export const projectsData: Project[] = [
   {
     id: SLIDE_IDS.GWITTER,
-    name: 'Gwitter',
-    title: 'Gwitter',
-    preview: gwitterPreview,
+    name: 'AW-Create',
+    title: 'AW-Create',
+    preview: awcreatePreview,
     position: { x: 1500, y: 0, z: 0, rotateY: 0 },
     description:
-      'A lightweight microblogging application that transforms GitHub Issues into your personal blogging platform',
-    tech: ['Blogging', 'Web', 'Issues'],
+      '专业编码定制项目服务，毕设级全套服务，包括："开题报告范例定制、论文范例定制、毕设级项目定制、范文降重、远程环境部署、1V1解答难点、答辩辅导"',
+    tech: ['C#', 'ASP.NET', 'Python', 'JAVA', '微信小程序', 'WEB', 'Django', 'SQL', 'Linux', 'Spring Boot'],
     links: [
       {
         type: 'demo',
-        url: 'https://simonaking.com/Gwitter',
-        text: 'Live Demo',
-      },
-      {
-        type: 'code',
-        url: 'https://github.com/SimonAKing/Gwitter',
-        text: 'Github',
-        githubRepo: 'SimonAKing/Gwitter',
+        url: 'https://meaw.xx.kg',
+        text: '访问',
       },
     ],
     layout: 'standard',
   },
   {
     id: SLIDE_IDS.HOMEPAGE,
-    name: 'HomePage',
-    title: 'HomePage',
-    preview: homepagePreview,
+    name: 'AW多平台视频解析器',
+    title: 'AW多平台视频解析器',
+    preview: spjxPreview,
     position: { x: 1200, y: 800, z: 200, rotateY: 30 },
     description:
-      'A modern and elegant personal homepage with fluid animation background, responsive design and smooth page transitions',
-    tech: ['WebGL', 'Blogging', 'Web', 'Homepage'],
+      '支持多平台视频解析下载，包括抖音、快手、B站等',
+    tech: ['视频解析', '抖音', '快手', 'B站'],
     links: [
-      { type: 'demo', url: 'https://simonaking.com', text: 'Live Demo' },
-      {
-        type: 'code',
-        url: 'https://github.com/SimonAKing/HomePage',
-        text: 'Github',
-        githubRepo: 'SimonAKing/HomePage',
+      { type: 'demo', 
+        url: 'https://jx.meaw.xx.kg',
+        text: '访问',
       },
     ],
     layout: 'reverse',
   },
   {
     id: SLIDE_IDS.GALLERY,
-    name: 'AnimatedGallery',
-    title: 'AnimatedGallery',
-    preview: animatedGalleryPreview,
+    name: '文昌帝君灵签',
+    title: '文昌帝君灵签',
+    preview: goodluckPreview,
     position: { x: 0, y: 1500, z: 400, rotateY: 90 },
-    description: 'A beautiful and modern photo gallery application',
-    tech: ['BlurHash', 'Blogging', 'Web', 'Gallery'],
+    description: '抽签解签，找寻答案，不过仅供娱乐，杜绝迷信哈',
+    tech: ['抽签', '解签'],
     links: [
       {
         type: 'demo',
-        url: 'https://simonaking.com/AnimatedGallery',
-        text: 'Live Demo',
-      },
-      {
-        type: 'code',
-        url: 'https://github.com/SimonAKing/AnimatedGallery',
-        text: 'Github',
-        githubRepo: 'SimonAKing/AnimatedGallery',
+        url: 'https://cq.meaw.xx.kg',
+        text: '访问',
       },
     ],
     layout: 'standard',
   },
   {
     id: SLIDE_IDS.TERMFOLIO,
-    name: 'TermFolio',
-    title: 'TermFolio',
-    preview: termFolioGif,
+    name: '简约风个人主页',
+    title: '简约风个人主页',
+    preview: grzyGif,
     position: { x: -1060, y: 1060, z: 600, rotateY: 135 },
-    description: 'An elegant terminal-style portfolio component for developers',
-    tech: ['Terminal UI', 'Blogging', 'Web'],
+    description: '一个简约风个人主页，包括：个人介绍、学习经历、网站展示、联系方式等',
+    tech: ['个人主页', '简约风', 'Web'],
     links: [
-      { type: 'demo', url: 'https://simonaking.com/about/', text: 'Live Demo' },
-      {
-        type: 'code',
-        url: 'https://github.com/SimonAKing/TermFolio',
-        text: 'Github',
-        githubRepo: 'SimonAKing/TermFolio',
-      },
+      { type: 'demo', url: 'https://awaw.meaw.xx.kg', text: '访问',},
     ],
     layout: 'reverse',
   },
@@ -103,18 +83,18 @@ export const projectsData: Project[] = [
     preview: thinkingPreview,
     position: { x: -1500, y: 0, z: 800, rotateY: 180 },
     description:
-      '我们每天都会接收到过载的信息，然而明月与砾同囊，其中的优质信息往往会被淹没。[思考的价值] 由此而来，分享内容的不限，偏向于 LLMs、科技的方向',
-    tech: ['Discussion', 'Knowledge', 'Sharing'],
+      ' ',
+    tech: [' 每天都是现场直播，过去的回放有好有坏别去在意，未来的剧本尚且未知，所以好好把握当下，享受过程，珍惜眼前人'],
     links: [
       {
         type: 'demo',
-        url: 'https://thinking.simonaking.com/',
-        text: 'Learn More',
+        url: '#',
+        text: '开心就好',
       },
     ],
     layout: 'standard',
   },
-  {
+  /* {
     id: SLIDE_IDS.SCRCPY,
     name: 'Scrcpy-GUI',
     title: 'Scrcpy-GUI',
@@ -184,55 +164,40 @@ export const projectsData: Project[] = [
       },
     ],
     layout: 'standard',
-  },
+  }, */
 ];
 
 export const mapData = [
   {
     id: SLIDE_IDS.TITLE,
-    name: 'Introduction',
+    name: '首页',
     icon: 'fas fa-home',
   },
 
   {
     id: SLIDE_IDS.GWITTER,
-    name: 'Gwitter',
+    name: 'AW-Create',
     icon: 'fab fa-twitter',
   },
   {
     id: SLIDE_IDS.HOMEPAGE,
-    name: 'HomePage',
-    icon: 'fas fa-home',
+    name: 'AW多平台视频解析器',
+    icon: 'fas fa-video',
   },
   {
     id: SLIDE_IDS.GALLERY,
-    name: 'AnimatedGallery',
-    icon: 'fas fa-images',
+    name: '文昌帝君灵签',
+    icon: 'fas fa-random',
   },
   {
     id: SLIDE_IDS.TERMFOLIO,
-    name: 'TermFolio',
-    icon: 'fas fa-terminal',
+    name: '简约风个人主页',
+    icon: 'fas fa-user',
   },
   {
     id: SLIDE_IDS.THINKING,
     name: '思考的价值',
     icon: 'fas fa-brain',
-  },
-  {
-    id: SLIDE_IDS.SCRCPY,
-    name: 'Scrcpy-GUI',
-    icon: 'fas fa-mobile-alt',
-  },
-  {
-    id: SLIDE_IDS.ITALKING,
-    name: 'ITalking',
-    icon: 'fas fa-robot',
-  },
-  {
-    id: SLIDE_IDS.PROJECTS,
-    name: 'FolioSpace',
-    icon: 'fas fa-layer-group',
   },
   {
     id: SLIDE_IDS.OVERVIEW,

@@ -1,10 +1,10 @@
 import { ContactLink } from '../types/userConfig';
+import touxiang from '../touxiang.jpg';
 
 export const USER_CONFIG = {
-  AVATAR_URL:
-    'https://img.cdn1.vip/i/6900deda4a8ef_1761664730.webp',
+  AVATAR_URL: touxiang,
   NAME: '阿旺',
-  JOB_TITLE: 'SimonAKing',
+  JOB_TITLE: '阿旺',
   BIO: [
     '👨‍💻 欢迎访问我的主页，在这里你可以',
     '✨ 查看我的其他网站 | 了解我的一点点过去',
@@ -14,34 +14,28 @@ export const USER_CONFIG = {
 
   CONTACT_LINKS: [
     {
-      type: 'github',
-      url: 'https://github.com/SimonAKing',
-      icon: 'fab fa-github',
-      text: 'GitHub',
+      type: 'qq',
+      url: 'https://qm.qq.com/q/5oycpMnQZ',
+      icon: 'fab fa-qq',
+      text: 'QQ',
     },
     {
       type: 'email',
-      url: 'mailto:hi@simonaking.com',
+      url: 'mailto:zgmeaw@163.com',
       icon: 'fas fa-envelope',
       text: '邮箱',
     },
     {
       type: 'website',
-      url: 'https://simonaking.com',
+      url: 'https://awaw.meaw.xx.kg',
       icon: 'fas fa-globe',
       text: '个人网站',
     },
     {
-      type: 'twitter',
-      url: 'https://x.com/simon_aking',
-      icon: 'fab fa-twitter',
-      text: 'X',
-    },
-    {
       type: 'wechat',
-      icon: 'fab fa-weixin',
-      text: '微信',
-      url: 'https://thinking.simonaking.com/',
+      icon: 'fab fa-weibo',
+      text: '微博',
+      url: 'https://weibo.com/u/7514642939',
     },
   ] as ContactLink[],
 } as const;

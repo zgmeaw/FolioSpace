@@ -76,6 +76,14 @@ const ProjectLinks = memo(
           className={`project-link cursor-target ${link.type === 'demo' ? '' : 'secondary'}`}
           target="_blank"
           rel="noopener noreferrer"
+          onClick={(e) => {
+            // 确保左键点击一定能打开链接
+            e.preventDefault();
+            e.stopPropagation();
+            if (link.url) {
+              window.open(link.url, '_blank', 'noopener,noreferrer');
+            }
+          }}
         >
           <i
             className={
@@ -215,19 +223,12 @@ const ProjectCard = memo(({ project }: { project: Project }) => {
     [project.preview, project.title],
   );
 
+  const cardClasses = `project-card ${isReverse ? 'reverse' : ''}`;
+
   return (
-    <div className="project-card">
-      {isReverse ? (
-        <>
-          <PreviewSection />
-          <InfoSection />
-        </>
-      ) : (
-        <>
-          <InfoSection />
-          <PreviewSection />
-        </>
-      )}
+    <div className={cardClasses}>
+      <InfoSection />
+      <PreviewSection />
     </div>
   );
 });

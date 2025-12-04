@@ -1,13 +1,10 @@
 export const SLIDE_IDS = {
   TITLE: 'title',
-  GWITTER: 'gwitter',
-  HOMEPAGE: 'homepage',
-  GALLERY: 'gallery',
-  TERMFOLIO: 'termfolio',
+  GWITTER: 'awcreate',
+  HOMEPAGE: 'spjx',
+  GALLERY: 'goodluck',
+  TERMFOLIO: 'grzy',
   THINKING: 'thinking',
-  SCRCPY: 'scrcpy',
-  ITALKING: 'italking',
-  PROJECTS: 'projects',
   OVERVIEW: 'overview',
 } as const;
 
