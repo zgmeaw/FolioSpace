@@ -2,13 +2,13 @@ import { ContactLink } from '../types/userConfig';
 
 export const USER_CONFIG = {
   AVATAR_URL:
-    'https://cdn.jsdelivr.net/gh/SimonAKing/images/projects/avatar.jpeg',
-  NAME: 'SimonAKing',
+    'https://img.cdn1.vip/i/6900deda4a8ef_1761664730.webp',
+  NAME: '阿旺',
   JOB_TITLE: 'SimonAKing',
   BIO: [
-    '👨‍💻 Front | Back | Left | Right | End Engineer',
-    '✨ Indie Hacker | Building What People Want',
-    '🤖 AI Enthusiast | Exploring AI-powered Products',
+    '👨‍💻 欢迎访问我的主页，在这里你可以',
+    '✨ 查看我的其他网站 | 了解我的一点点过去',
+    '🤖 联系我的方式 | 希望你能找到你想要的',
   ],
   WECHAT_ID: 'SimonAKing',
 
