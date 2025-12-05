@@ -23,7 +23,7 @@ export const projectsData: Project[] = [
     links: [
       {
         type: 'demo',
-        url: 'https://jd.meaw.xx.kg',
+        url: 'https://jd.meaw.top',
         text: '访问',
       },
     ],
@@ -40,7 +40,7 @@ export const projectsData: Project[] = [
     tech: ['视频解析', '抖音', '快手', 'B站'],
     links: [
       { type: 'demo', 
-        url: 'https://jx.meaw.xx.kg',
+        url: 'https://jx.meaw.top',
         text: '访问',
       },
     ],
@@ -57,7 +57,7 @@ export const projectsData: Project[] = [
     links: [
       {
         type: 'demo',
-        url: 'https://cq.meaw.xx.kg',
+        url: 'https://cq.meaw.top',
         text: '访问',
       },
     ],
@@ -72,7 +72,7 @@ export const projectsData: Project[] = [
     description: '一个简约风个人主页，包括：个人介绍、学习经历、网站展示、联系方式等',
     tech: ['个人主页', '简约风', 'Web'],
     links: [
-      { type: 'demo', url: 'https://aw.meaw.xx.kg', text: '访问',},
+      { type: 'demo', url: 'https://aw.meaw.top', text: '访问',},
     ],
     layout: 'reverse',
   },
