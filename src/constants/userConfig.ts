@@ -27,7 +27,7 @@ export const USER_CONFIG = {
     },
     {
       type: 'website',
-      url: 'https://jd.meaw.xx.kg',
+      url: 'https://jd.meaw.top',
       icon: 'fas fa-globe',
       text: '接单平台',
     },
