@@ -4,7 +4,7 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "build": "npm install --include=dev && npx @rsbuild/core build",
+    "build": "npm install --omit=optional && rsbuild build",
     "dev": "rsbuild dev --open",
     "format": "prettier --write .",
     "lint": "eslint .",
