@@ -1,0 +1,13 @@
+{
+  "build": {
+    "command": "npm run build",
+    "cwd": ".",
+    "watch_dir": "src"
+  },
+  "deployment": {
+    "env": {
+      "NODE_VERSION": "20"
+    }
+  }
+}
+
