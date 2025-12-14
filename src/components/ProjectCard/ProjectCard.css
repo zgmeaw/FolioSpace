@@ -498,12 +498,13 @@
   min-height: 280px;
   max-height: 350px;
 
-  transition: all 0.3s ease;
+  transition: all 0.3s ease, opacity 0.5s ease;
 
   color: var(--text-secondary);
   background: transparent;
 
   object-fit: cover;
+  border-radius: 16px; /* 保持与视频一致的圆角 */
 }
 
 /* 视频样式，确保和图片显示效果一致 */
@@ -516,6 +517,13 @@
   max-height: 350px;
   object-fit: cover;
   background: transparent;
+  border-radius: 16px; /* 保持与图片一致的圆角 */
+  transition: all 0.3s ease;
+  will-change: transform;
+}
+
+.project-video:hover {
+  transform: scale(1.02) translateZ(0);
 }
 
 .project-image {

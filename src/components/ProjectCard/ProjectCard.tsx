@@ -1,7 +1,8 @@
-import { memo, useCallback, useEffect, useMemo, useState } from 'react';
+import { memo, useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { GITHUB_TOKEN } from '../../constants/userConfig';
 import { GitHubRepoInfo, Link, Project } from '../../types/project';
 import { isMobile } from '../../utils/imageLoader';
+import { getImageUrl, getVideoUrl } from '../../constants/imageConfig';
 import './ProjectCard.css';
 
 const formatCount = (count: number): string => {
@@ -113,6 +114,30 @@ const ProjectCard = memo(({ project }: { project: Project }) => {
   const [repoInfo, setRepoInfo] = useState<GitHubRepoInfo | null>(null);
   const [loading, setLoading] = useState(true);
   const [imageLoaded, setImageLoaded] = useState(false);
+  const [videoReady, setVideoReady] = useState(false);
+  const videoRef = useRef<HTMLVideoElement | null>(null);
+
+  // 判断是否为视频项目（通过检查 preview URL 是否包含 .mp4）
+  const isVideo = project.preview.endsWith('.mp4') || project.preview.endsWith('.webm');
+  
+  // 获取对应的图片 URL（用于占位符）
+  // 项目 ID 直接对应图片名称（awcreate, spjx, goodluck, grzy）
+  const getPlaceholderImageUrl = (): string => {
+    if (!isVideo) return project.preview;
+    
+    // 使用项目 ID 来匹配图片（项目 ID 就是图片名称）
+    const imageName = project.id as 'awcreate' | 'spjx' | 'goodluck' | 'grzy' | string;
+    if (imageName === 'awcreate' || imageName === 'spjx' || imageName === 'goodluck' || imageName === 'grzy') {
+      try {
+        return getImageUrl(imageName as 'awcreate' | 'spjx' | 'goodluck' | 'grzy');
+      } catch {
+        return project.preview;
+      }
+    }
+    return project.preview;
+  };
+
+  const placeholderImageUrl = getPlaceholderImageUrl();
 
   const githubRepo = project.links.find(
     (link) => link.type === 'code' && link.githubRepo,
@@ -209,28 +234,44 @@ const ProjectCard = memo(({ project }: { project: Project }) => {
     ],
   );
 
-  // 判断是否为视频文件
-  const isVideo = project.preview.endsWith('.mp4') || project.preview.endsWith('.webm');
-
-  // 图片/视频加载处理
+  // 先加载占位图片
   useEffect(() => {
     if (!imageLoaded) {
-      if (isVideo) {
-        // 视频加载处理
-        const video = document.createElement('video');
-        video.preload = 'metadata';
-        video.src = project.preview;
-        video.onloadedmetadata = () => setImageLoaded(true);
-        video.onerror = () => setImageLoaded(true); // 即使加载失败也显示，避免一直显示占位符
-      } else {
-        // 图片加载处理
-        const img = new Image();
-        img.onload = () => setImageLoaded(true);
-        img.onerror = () => setImageLoaded(true);
-        img.src = project.preview;
-      }
+      const img = new Image();
+      img.onload = () => setImageLoaded(true);
+      img.onerror = () => setImageLoaded(true); // 即使加载失败也显示，避免一直显示占位符
+      img.src = placeholderImageUrl;
     }
-  }, [project.preview, imageLoaded, isVideo]);
+  }, [placeholderImageUrl, imageLoaded]);
+
+  // 如果是视频项目，在后台加载视频
+  useEffect(() => {
+    if (isVideo && imageLoaded && !videoReady) {
+      const video = document.createElement('video');
+      video.preload = 'auto';
+      video.muted = true;
+      video.src = project.preview;
+      
+      // 当视频可以完整播放时（已缓冲足够的数据）
+      video.addEventListener('canplaythrough', () => {
+        setVideoReady(true);
+      }, { once: true });
+      
+      // 错误处理
+      video.addEventListener('error', () => {
+        // 视频加载失败，保持显示图片
+        console.warn('Video failed to load, keeping image placeholder');
+      }, { once: true });
+      
+      // 开始加载视频
+      video.load();
+      
+      return () => {
+        video.removeEventListener('canplaythrough', () => {});
+        video.removeEventListener('error', () => {});
+      };
+    }
+  }, [isVideo, imageLoaded, videoReady, project.preview]);
 
   const PreviewSection = useCallback(
     () => (
@@ -238,21 +279,32 @@ const ProjectCard = memo(({ project }: { project: Project }) => {
         className={`project-preview cursor-target ${loading ? 'animate' : ''}`}
       >
         {imageLoaded ? (
-          isVideo ? (
+          isVideo && videoReady ? (
+            // 视频加载完成，显示视频
             <video
+              ref={videoRef}
               className="project-image project-video"
               src={project.preview}
               autoPlay
               loop
               muted
               playsInline
-              preload="metadata"
+              preload="auto"
               aria-label={project.title}
+              onLoadedData={() => {
+                // 确保视频开始播放
+                if (videoRef.current) {
+                  videoRef.current.play().catch((err) => {
+                    console.warn('Video autoplay failed:', err);
+                  });
+                }
+              }}
             />
           ) : (
+            // 显示占位图片（视频加载中或非视频项目）
             <img
               className="project-image"
-              src={project.preview}
+              src={placeholderImageUrl}
               alt={project.title}
               loading="lazy"
               decoding="async"
@@ -265,7 +317,7 @@ const ProjectCard = memo(({ project }: { project: Project }) => {
         )}
       </div>
     ),
-    [project.preview, project.title, imageLoaded, loading, isVideo],
+    [project.preview, project.title, imageLoaded, loading, isVideo, videoReady, placeholderImageUrl],
   );
 
   const cardClasses = `project-card ${isReverse ? 'reverse' : ''}`;

@@ -2,7 +2,7 @@
  * 资源配置 - 使用 jsDelivr CDN 加速资源加载
  * 
  * 视频文件存放在：StaticResourceRepository/viodes/
- * 图片文件存放在：StaticResourceRepository/images/gif/
+ * 图片文件存放在：StaticResourceRepository/images/photo/
  * 
  * CDN URL 格式：
  * https://cdn.jsdelivr.net/gh/用户名/仓库名@分支/文件路径
@@ -18,7 +18,7 @@ const VIDEO_PATH = 'viodes';
 const VIDEO_CDN_BASE = `https://cdn.jsdelivr.net/gh/${GITHUB_USER}/${IMAGE_REPO}@${GITHUB_BRANCH}/${VIDEO_PATH}`;
 
 // 图片文件路径
-const IMAGE_PATH = 'images/gif';
+const IMAGE_PATH = 'images/photo';
 const IMAGE_CDN_BASE = `https://cdn.jsdelivr.net/gh/${GITHUB_USER}/${IMAGE_REPO}@${GITHUB_BRANCH}/${IMAGE_PATH}`;
 
 /**
@@ -37,6 +37,11 @@ export const VIDEO_CDN_URLS = {
  */
 export const IMAGE_CDN_URLS = {
   wechat: `${IMAGE_CDN_BASE}/wechat.png`,
+  // 项目预览图片（作为占位符，视频加载完成后切换为视频）
+  awcreate: `${IMAGE_CDN_BASE}/awcreate.jpg`,
+  spjx: `${IMAGE_CDN_BASE}/spjx.jpg`,
+  goodluck: `${IMAGE_CDN_BASE}/goodluck.jpg`,
+  grzy: `${IMAGE_CDN_BASE}/grzy.jpg`,
 } as const;
 
 /**
