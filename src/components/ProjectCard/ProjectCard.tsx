@@ -209,14 +209,28 @@ const ProjectCard = memo(({ project }: { project: Project }) => {
     ],
   );
 
-  // 图片加载处理
+  // 判断是否为视频文件
+  const isVideo = project.preview.endsWith('.mp4') || project.preview.endsWith('.webm');
+
+  // 图片/视频加载处理
   useEffect(() => {
     if (!imageLoaded) {
-      const img = new Image();
-      img.onload = () => setImageLoaded(true);
-      img.src = project.preview;
+      if (isVideo) {
+        // 视频加载处理
+        const video = document.createElement('video');
+        video.preload = 'metadata';
+        video.src = project.preview;
+        video.onloadedmetadata = () => setImageLoaded(true);
+        video.onerror = () => setImageLoaded(true); // 即使加载失败也显示，避免一直显示占位符
+      } else {
+        // 图片加载处理
+        const img = new Image();
+        img.onload = () => setImageLoaded(true);
+        img.onerror = () => setImageLoaded(true);
+        img.src = project.preview;
+      }
     }
-  }, [project.preview, imageLoaded]);
+  }, [project.preview, imageLoaded, isVideo]);
 
   const PreviewSection = useCallback(
     () => (
@@ -224,14 +238,26 @@ const ProjectCard = memo(({ project }: { project: Project }) => {
         className={`project-preview cursor-target ${loading ? 'animate' : ''}`}
       >
         {imageLoaded ? (
-          <img
-            className="project-image"
-            src={project.preview}
-            alt={project.title}
-            loading="lazy"
-            decoding="async"
-            fetchpriority="low"
-          />
+          isVideo ? (
+            <video
+              className="project-image project-video"
+              src={project.preview}
+              autoPlay
+              loop
+              muted
+              playsInline
+              preload="metadata"
+              aria-label={project.title}
+            />
+          ) : (
+            <img
+              className="project-image"
+              src={project.preview}
+              alt={project.title}
+              loading="lazy"
+              decoding="async"
+            />
+          )
         ) : (
           <div className="project-image-placeholder">
             <div className="placeholder-spinner"></div>
@@ -239,7 +265,7 @@ const ProjectCard = memo(({ project }: { project: Project }) => {
         )}
       </div>
     ),
-    [project.preview, project.title, imageLoaded, loading],
+    [project.preview, project.title, imageLoaded, loading, isVideo],
   );
 
   const cardClasses = `project-card ${isReverse ? 'reverse' : ''}`;

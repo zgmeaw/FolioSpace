@@ -1,11 +1,12 @@
-// 使用 CDN 加载所有图片
-import { IMAGE_CDN_URLS } from './imageConfig';
+// 使用 CDN 加载所有资源
+import { VIDEO_CDN_URLS, IMAGE_CDN_URLS } from './imageConfig';
 
-// 所有图片都通过 CDN 加载
-const awcreatePreview = IMAGE_CDN_URLS.awcreate;
-const spjxPreview = IMAGE_CDN_URLS.spjx;
-const goodluckPreview = IMAGE_CDN_URLS.goodluck;
-const grzyGif = IMAGE_CDN_URLS.grzy;
+// 项目预览使用视频（MP4），替代 GIF
+const awcreatePreview = VIDEO_CDN_URLS.awcreate;
+const spjxPreview = VIDEO_CDN_URLS.spjx;
+const goodluckPreview = VIDEO_CDN_URLS.goodluck;
+const grzyGif = VIDEO_CDN_URLS.grzy;
+// 静态图片
 const thinkingPreview = IMAGE_CDN_URLS.wechat;
 
 import { Project } from '../types/project';

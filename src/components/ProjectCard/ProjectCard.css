@@ -506,6 +506,18 @@
   object-fit: cover;
 }
 
+/* 视频样式，确保和图片显示效果一致 */
+.project-video {
+  width: 100%;
+  min-width: 280px;
+  max-width: 350px;
+  height: 100%;
+  min-height: 280px;
+  max-height: 350px;
+  object-fit: cover;
+  background: transparent;
+}
+
 .project-image {
   will-change: transform;
 }
