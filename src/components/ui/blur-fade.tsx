@@ -38,9 +38,11 @@ export function BlurFade({
   const ref = useRef(null)
   const inViewResult = useInView(ref, { once: true, margin: inViewMargin })
   const isInView = !inView || inViewResult
+  // 优化：在移动端禁用 blur 效果，使用纯 opacity 动画（GPU 加速）
+  const isMobile = typeof window !== 'undefined' && window.innerWidth <= 768;
   const defaultVariants: Variants = {
-    hidden: { y: yOffset, opacity: 0, filter: `blur(${blur})` },
-    visible: { y: -yOffset, opacity: 1, filter: `blur(0px)` },
+    hidden: { y: yOffset, opacity: 0, ...(isMobile ? {} : { filter: `blur(${blur})` }) },
+    visible: { y: -yOffset, opacity: 1, ...(isMobile ? {} : { filter: `blur(0px)` }) },
   }
   const combinedVariants = variant || defaultVariants
   return (
@@ -56,6 +58,7 @@ export function BlurFade({
           duration,
           ease: "easeOut",
         }}
+        style={{ willChange: 'transform, opacity' }}
         className={className}
       >
         {children}

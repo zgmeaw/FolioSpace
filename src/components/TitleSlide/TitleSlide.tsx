@@ -39,6 +39,9 @@ const TitleSlide = () => {
                 src={USER_CONFIG.AVATAR_URL}
                 alt={`${USER_CONFIG.NAME} Avatar`}
                 className="profile-avatar cursor-target"
+                loading="eager"
+                fetchpriority="high"
+                decoding="async"
               />
               <div className="status-indicator"></div>
             </div>

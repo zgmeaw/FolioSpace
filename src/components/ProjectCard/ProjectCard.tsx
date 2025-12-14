@@ -1,6 +1,7 @@
 import { memo, useCallback, useEffect, useMemo, useState } from 'react';
 import { GITHUB_TOKEN } from '../../constants/userConfig';
 import { GitHubRepoInfo, Link, Project } from '../../types/project';
+import { isMobile } from '../../utils/imageLoader';
 import './ProjectCard.css';
 
 const formatCount = (count: number): string => {
@@ -111,6 +112,7 @@ const ProjectCard = memo(({ project }: { project: Project }) => {
   const isReverse = project.layout === 'reverse';
   const [repoInfo, setRepoInfo] = useState<GitHubRepoInfo | null>(null);
   const [loading, setLoading] = useState(true);
+  const [imageLoaded, setImageLoaded] = useState(false);
 
   const githubRepo = project.links.find(
     (link) => link.type === 'code' && link.githubRepo,
@@ -207,20 +209,37 @@ const ProjectCard = memo(({ project }: { project: Project }) => {
     ],
   );
 
+  // 图片加载处理
+  useEffect(() => {
+    if (!imageLoaded) {
+      const img = new Image();
+      img.onload = () => setImageLoaded(true);
+      img.src = project.preview;
+    }
+  }, [project.preview, imageLoaded]);
+
   const PreviewSection = useCallback(
     () => (
       <div
         className={`project-preview cursor-target ${loading ? 'animate' : ''}`}
       >
-        <img
-          className="project-image"
-          src={project.preview}
-          alt={project.title}
-          loading="lazy"
-        />
+        {imageLoaded ? (
+          <img
+            className="project-image"
+            src={project.preview}
+            alt={project.title}
+            loading="lazy"
+            decoding="async"
+            fetchpriority="low"
+          />
+        ) : (
+          <div className="project-image-placeholder">
+            <div className="placeholder-spinner"></div>
+          </div>
+        )}
       </div>
     ),
-    [project.preview, project.title],
+    [project.preview, project.title, imageLoaded, loading],
   );
 
   const cardClasses = `project-card ${isReverse ? 'reverse' : ''}`;

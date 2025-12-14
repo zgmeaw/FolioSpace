@@ -7,8 +7,9 @@
   pointer-events: none;
   z-index: 9999;
   mix-blend-mode: difference;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%) translateZ(0);
   transition: transform 0.1s cubic-bezier(0.215, 0.61, 0.355, 1);
+  will-change: transform;
 }
 
 .target-cursor-center {

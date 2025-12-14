@@ -1,4 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+/* 字体已移至 HTML 中异步加载，避免阻塞渲染 */
+/* @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap'); */
 
 :root {
   /* 背景色 - 使用更柔和的蓝紫色调 */

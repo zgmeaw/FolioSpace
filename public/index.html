@@ -16,21 +16,35 @@
     <meta name="msapplication-navbutton-color" content="#747171" />
 
     <meta http-equiv="x-dns-prefetch-control" content="on" />
-    <link rel="dns-prefetch" href="https://cdn.jsdelivr.net" />
-    <link rel="prefetch" href="https://cdn.jsdelivr.net/" />
-    <link rel="dns-prefetch" href="https://disqus.com" />
-    <link rel="dns-prefetch" href="https://api.github.com/" />
-    <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
+    <!-- 关键资源预连接 -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin />
+    <!-- 关键 CSS 预加载 -->
     <link
+      rel="preload"
       href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
-      rel="stylesheet"
+      as="style"
+      onload="this.onload=null;this.rel='stylesheet'"
     />
+    <noscript>
+      <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet"
+      />
+    </noscript>
     <link
-      rel="stylesheet"
+      rel="preload"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      as="style"
+      onload="this.onload=null;this.rel='stylesheet'"
     />
+    <noscript>
+      <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      />
+    </noscript>
 
     <link
       rel="icon"
@@ -114,7 +128,19 @@
 
   <body>
     <div id="root"></div>
-    <script src="https://cdn.jsdelivr.net/gh/impress/impress.js@2.0.0/js/impress.js"></script>
-    <script src="js/Mouse.js"></script><!-- 点击烟花特效 -->
+    <!-- impress.js 使用 defer 加载，不阻塞 HTML 解析 -->
+    <script src="https://cdn.jsdelivr.net/gh/impress/impress.js@2.0.0/js/impress.js" defer></script>
+    <!-- Mouse.js 延迟加载，避免阻塞首屏渲染 -->
+    <script>
+      // 延迟加载烟花特效脚本，不影响首屏性能
+      window.addEventListener('load', function() {
+        setTimeout(function() {
+          const script = document.createElement('script');
+          script.src = './js/Mouse.js';
+          script.async = true;
+          document.body.appendChild(script);
+        }, 2000); // 延迟 2 秒加载，确保首屏内容先渲染
+      });
+    </script>
   </body>
 </html>
