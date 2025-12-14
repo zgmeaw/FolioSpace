@@ -1,20 +1,12 @@
-// 使用 CDN 或本地图片
-import { USE_CDN, IMAGE_CDN_URLS } from './imageConfig';
+// 使用 CDN 加载所有图片
+import { IMAGE_CDN_URLS } from './imageConfig';
 
-// 本地图片导入（开发环境使用）
-import goodluckPreviewLocal from '../assets/goodluck.gif';
-import awcreatePreviewLocal from '../assets/awcreate.gif';
-import spjxPreviewLocal from '../assets/spjx.gif';
-import grzyGifLocal from '../assets/grzy.gif';
-import thinkingPreviewLocal from '../assets/wechat.png';
-
-// 根据环境选择使用 CDN 或本地
-// 生产环境使用 CDN，开发环境使用本地文件
-const awcreatePreview = USE_CDN ? IMAGE_CDN_URLS.awcreate : awcreatePreviewLocal;
-const spjxPreview = USE_CDN ? IMAGE_CDN_URLS.spjx : spjxPreviewLocal;
-const goodluckPreview = USE_CDN ? IMAGE_CDN_URLS.goodluck : goodluckPreviewLocal;
-const grzyGif = USE_CDN ? IMAGE_CDN_URLS.grzy : grzyGifLocal;
-const thinkingPreview = USE_CDN ? IMAGE_CDN_URLS.wechat : thinkingPreviewLocal;
+// 所有图片都通过 CDN 加载
+const awcreatePreview = IMAGE_CDN_URLS.awcreate;
+const spjxPreview = IMAGE_CDN_URLS.spjx;
+const goodluckPreview = IMAGE_CDN_URLS.goodluck;
+const grzyGif = IMAGE_CDN_URLS.grzy;
+const thinkingPreview = IMAGE_CDN_URLS.wechat;
 
 import { Project } from '../types/project';
 import { SLIDE_IDS } from './slideIds';
