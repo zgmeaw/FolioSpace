@@ -1,7 +1,7 @@
 /**
  * 资源配置 - 使用 jsDelivr CDN 加速资源加载
  * 
- * 视频文件存放在：StaticResourceRepository/viodesz/
+ * 视频文件存放在：StaticResourceRepository/viodes/
  * 图片文件存放在：StaticResourceRepository/images/gif/
  * 
  * CDN URL 格式：
@@ -14,7 +14,7 @@ const IMAGE_REPO = 'StaticResourceRepository';   // 专门存放资源的仓库�
 const GITHUB_BRANCH = 'main';                     // 分支名（main 或 master）
 
 // 视频文件路径
-const VIDEO_PATH = 'viodesz';
+const VIDEO_PATH = 'viodes';
 const VIDEO_CDN_BASE = `https://cdn.jsdelivr.net/gh/${GITHUB_USER}/${IMAGE_REPO}@${GITHUB_BRANCH}/${VIDEO_PATH}`;
 
 // 图片文件路径
